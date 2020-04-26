@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-shure-ad4",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This Node-RED module allows you to send and receive messages from and to Shure wireless microphone receivers of the Axient Digital product line.",
   "keywords": ["node-red", "shure"],
   "author": {

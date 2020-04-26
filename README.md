@@ -78,7 +78,7 @@ With the option "One msg with all values" the node sends a single msg including 
         	"rfRssiB":"006"
     }
     
-The topic is set to `[TOPIC_PREFIX]/[RECEIVER_NAME]/SAMPLE/ALL`.
+The topic is set to `[TOPIC_PREFIX]/[RECEIVER_NAME]/SAMPLE/ALL/[CHANNEL]`.
 
 
 ## Commands
