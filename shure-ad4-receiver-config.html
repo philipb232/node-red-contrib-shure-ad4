@@ -1,0 +1,29 @@
+<script type="text/javascript">
+    RED.nodes.registerType('shure-ad4-receiver-config',{
+        category: 'config',
+        defaults: {
+            name: {value: "", required: true},
+            host: {value: "", required: true},
+            meter: {value: 0, validate: RED.validators.number() }
+        },
+        label: function() {
+            return this.name;
+        },
+        paletteLabel: "Shure AD4 Receiver Config"
+    });
+</script>
+
+<script type="text/html" data-template-name="shure-ad4-receiver-config">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-config-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-host"><i class="fa fa-globe"></i> Host</label>
+        <input type="text" id="node-config-input-host">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-meter"><i class="fa fa-clock-o"></i> Meter rate (ms)</label>
+        <input type="text" id="node-config-input-meter">
+    </div>
+</script>

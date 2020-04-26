@@ -1,0 +1,20 @@
+{
+  "name": "node-red-contrib-shure-ad4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "node-red": {
+    "nodes": {
+      "shure-ad4-request": "shure-ad4-request.js",
+      "shure-ad4-receiver-config": "shure-ad4-receiver-config.js",
+      "shure-ad4-response": "shure-ad4-response.js",
+      "shure-ad4-sample": "shure-ad4-sample.js"
+    }
+  }
+}

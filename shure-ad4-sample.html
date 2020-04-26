@@ -1,0 +1,50 @@
+<script type="text/javascript">
+    RED.nodes.registerType('shure-ad4-sample', {
+        category: 'shure',
+        color: '#B2FF33',
+        defaults: {
+            receiver: {value: "", type:"shure-ad4-receiver-config"},
+            name: { value: "" },
+            topic: { value: "" },
+            mode: { value: "One msg per value" },
+            commands: { value: "" }
+        },
+        inputs: 0,
+        outputs: 1,
+        icon: "font-awesome/fa-microphone",
+        label: function() {
+            return this.name || "Shure AD4 sample";
+        },
+        paletteLabel: "AD4 sample"
+    });
+</script>
+
+<script type="text/html" data-template-name="shure-ad4-sample">
+    <div class="form-row">
+        <label for="node-input-receiver"><i class="fa fa-tasks"></i> Receiver</label>
+        <input type="text" id="node-input-receiver" placeholder="Receiver">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topic"><i class="fa fa-location-arrow"></i> Topic prefix</label>
+        <input type="text" id="node-input-topic" placeholder="Topic prefix">
+    </div>
+    <div class="form-row">
+        <label for="node-input-mode"><i class="fa fa-code"></i> Mode</label>
+        <select id="node-input-mode">
+            <option>One msg per value</option>
+            <option>One msg with all values</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-commands"><i class="fa fa-search"></i> Commands</label>
+        <input type="text" id="node-input-commands" placeholder="Commands">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="shure-ad4-sample">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>

@@ -1,0 +1,58 @@
+<script type="text/javascript">
+    RED.nodes.registerType('shure-ad4-request', {
+        category: 'shure',
+        color: '#B2FF33',
+        defaults: {
+            receiver: {value: "", type:"shure-ad4-receiver-config"},
+            name: { value: "" },
+            commandType: { value: "GET" },
+            channel: { value: "" },
+            command: { value: "" }
+        },
+        inputs: 1,
+        outputs: 0,
+        icon: "font-awesome/fa-microphone",
+        label: function() {
+            return this.name || "Shure AD4 request";
+        },
+        paletteLabel: "AD4 request",
+        align: 'right'
+    });
+</script>
+
+<script type="text/html" data-template-name="shure-ad4-request">
+    <div class="form-row">
+        <label for="node-input-receiver"><i class="fa fa-tasks"></i> Receiver</label>
+        <input type="text" id="node-input-receiver" placeholder="Receiver">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-commandType"><i class="fa fa-terminal"></i> Command type</label>
+        <select id="node-input-commandType">
+            <option>GET</option>
+            <option>SET</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-channel"><i class="fa fa-microphone"></i> Channel</label>
+        <select id="node-input-channel">
+            <option></option>
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-command"><i class="fa fa-terminal"></i> Command</label>
+        <input type="text" id="node-input-command" placeholder="Command">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="shure-ad4-request">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>
