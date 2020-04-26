@@ -46,5 +46,22 @@
 </script>
 
 <script type="text/html" data-help-name="shure-ad4-sample">
-    <p>A simple node that converts the message payloads into all lower-case characters</p>
+    <p>The sample node is used to receive sample massages which are send periodically by the receiver. You can set the interval in the receiver config node (Meter rate (ms) property). A sample message from a receiver contains several values. You can choose between two ways in which the node will handle these values by changing the Mode property of the node. With the option “One msg per value” the node sends a msg for each value. The values can be filtered via the Commands property of the node. The msg is structured as follows:</p>
+    <p>[TOPIC_PREFIX]/[RECEIVER_NAME]/SAMPLE/[COMMAND]/[CHANNEL]</p>
+    <p>With the option "One msg with all values" the node sends a single msg including all values as an object in the payload. The Commands filter property has no effect in this mode. The object is structured as follows:</p>
+    <p>{<br>
+        "raw":"< SAMPLE 3 ALL 255 000 005 020 XX 00 005 00 006 >",<br>
+        "commandType":"SAMPLE",<br>
+        "channel":"3",<br>
+        "qual":"255",<br>
+        "audBitmap":"000",<br>
+        "audPeak":"005",<br>
+        "audRms":"020",<br>
+        "rfAntStats":"XX",<br>
+        "rfBitmapA":"00",<br>
+        "rfRssiA":"005",<br>
+        "rfBitmapB":"00",<br>
+        "rfRssiB":"006"<br>
+    }</p>
+    <p>The topic is set to [TOPIC_PREFIX]/[RECEIVER_NAME]/SAMPLE/ALL.</p>
 </script>

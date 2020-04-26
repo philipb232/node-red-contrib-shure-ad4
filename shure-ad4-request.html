@@ -54,5 +54,24 @@
 </script>
 
 <script type="text/html" data-help-name="shure-ad4-request">
-    <p>A simple node that converts the message payloads into all lower-case characters</p>
+    <p>Use the request node to send messages to a receiver. There are three options to pass the necessary data to the node.</p>
+    <h3>Option 1 – Object in the msg.payload</h3>
+    <p>Pass an object with the following structure as payload to the node:</p>
+    <p>
+        {<br>
+        commandType: "SET",  // GET or SET<br>
+        command: "FLASH", // See commands section for details on the commands.<br>
+        channel: "1", // Optional, depending on the command.<br>
+        value: "ON" // Optional, depending on the command.<br>
+        }
+    </p>
+    <h3>Option 2 – Topic</h3>
+    <p>Pass a topic (msg.topic) with the following structure to the node. The value goes into the msg.payload.</p>
+    <p>For commands with channel: [COMMAND_TYPE]/[COMMAND]/[CHANNEL]</p>
+    <p>For commands without channel: [COMMAND_TYPE]/[COMMAND]</p>
+    <p>Example:</p>
+    <p>msg.topic = “SET/FLASH/1”;<br>
+        msg.payload = “ON”;</p>
+    <h3>Option 3 – Node properties</h3>
+    <p>You can also set the necessary information in the node properties. Command type and Command are required. Channel is optional. The value has to be in the msg.payload.</p>
 </script>

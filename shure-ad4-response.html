@@ -50,5 +50,11 @@
 </script>
 
 <script type="text/html" data-help-name="shure-ad4-response">
-    <p>A simple node that converts the message payloads into all lower-case characters</p>
+    <p>Use the response node to receive REP messages send by a receiver. The node sends a msg with a topic in the following format and the value as msg.payload.</p>
+    <p>[RECEIVER_NAME]/REP/[COMMAND]/[CHANNEL]</p>
+    <p>E.g.: Receiver-1/REP/FLASH/1 with payload "ON".</p>
+    <p>If you set the node property Topic prefix the topic format is as follows:</p>
+    <p>[TOPIC_PREFIX]/[RECEIVER_NAME]/REP/[COMMAND]/[CHANNEL]</p>
+    <p>The msg object also includes the field raw with the original message from the receiver.</p>
+    <p>You can use the Command and Channel properties of the node to filter for a specific command and/or channel.</p>
 </script>
