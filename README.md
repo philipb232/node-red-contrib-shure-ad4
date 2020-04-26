@@ -1,4 +1,4 @@
-# node-red-contrib-shure-4ad
+# node-red-contrib-shure-ad4
 This Node-RED module allows you to send and receive messages from and to Shure wireless microphone receivers of the Axient&reg; Digital product line. It is currently only tested with the AD4Q but should also work with the AD4D.
 
 ## Shure AD4 Receiver Config Node
