@@ -15,7 +15,7 @@ The AD4 receivers can send metering data in intervals between 100 and 65535 mill
 ## Shure AD4 Request Node
 Use the request node to send messages to a receiver. There are three options to pass the necessary data to the node.
 
-###Option 1 – Object in the msg.payload
+### Option 1 – Object in the msg.payload
 Pass an object with the following structure as payload to the node:
     
     {
@@ -25,7 +25,7 @@ Pass an object with the following structure as payload to the node:
 	    value: "ON" // Optional, depending on the command.
     }
 
-###Option 2 – Topic
+### Option 2 – Topic
 Pass a topic (msg.topic) with the following structure to the node. The value goes into the msg.payload.
 
 For commands with channel: `[COMMAND_TYPE]/[COMMAND]/[CHANNEL]`
@@ -37,10 +37,10 @@ Example:
     msg.topic = “SET/FLASH/1”;
     msg.payload = “ON”;
 
-###Option 3 – Node properties
+### Option 3 – Node properties
 You can also set the necessary information in the node properties. _Command type_ and _Command_ are required. _Channel_ is optional. The value has to be in the msg.payload.
 
-##Shure AD4 Response Node
+## Shure AD4 Response Node
 Use the response node to receive REP messages send by a receiver. The node sends a msg with a topic in the following format and the value as msg.payload.
 
 `[RECEIVER_NAME]/REP/[COMMAND]/[CHANNEL]`
@@ -55,7 +55,7 @@ The msg object also includes the field raw with the original message from the re
 
 You can use the _Command_ and _Channel_ properties of the node to filter for a specific command and/or channel.
 
-##Shure AD4 Sample Node
+## Shure AD4 Sample Node
 The sample node is used to receive sample massages which are send periodically by the receiver. You can set the interval in the receiver config node (Meter rate (ms) property).
 A sample message from a receiver contains several values. You can choose between two ways in which the node will handle these values by changing the Mode property of the node. With the option “One msg per value” the node sends a msg for each value. The values can be filtered via the _Commands_ property of the node. The msg is structured as follows:
 
@@ -81,7 +81,7 @@ With the option "One msg with all values" the node sends a single msg including 
 The topic is set to `[TOPIC_PREFIX]/[RECEIVER_NAME]/SAMPLE/ALL`.
 
 
-##Commands
+## Commands
 Details on the commands can be found on the Shure website:
 
 https://www.shure.com/de-DE/produkte/funkmikrofon-systeme/axient_digital/ad4q
