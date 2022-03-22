@@ -14,12 +14,11 @@ module.exports = function(RED) {
 
         node.receiver.on('sample_response', function(sample) {
             var msg = {
-                raw: sample.raw,
-                topic: node.receiver.hostName + "/SAMPLE"
+                topic: sample.name + "/SAMPLE"
             }
 
             if(config.topic) {
-                msg.topic = config.topic + '/' + sample.topic;
+                msg.topic = config.topic + '/' + msg.topic;
             }
 
             if(config.mode === "One msg per value") {
@@ -42,7 +41,6 @@ module.exports = function(RED) {
         node.sendSingleSample = function(msg, command, channel, value) {
             if(value && (!config.commands || config.commands.includes(command))) {
                 node.send({
-                    raw: msg.raw,
                     topic: msg.topic + "/" + command + "/" + channel,
                     payload: value
                 });

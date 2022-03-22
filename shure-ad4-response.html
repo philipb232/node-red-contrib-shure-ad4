@@ -6,6 +6,7 @@
             receiver: {value: "", type:"shure-ad4-receiver-config"},
             name: { value: "" },
             topic: { value: "" },
+            mode: { value: "value" },
             channel: { value: "" },
             command: { value: "" }
         },
@@ -31,6 +32,13 @@
     <div class="form-row">
         <label for="node-input-topic"><i class="fa fa-location-arrow"></i> Topic prefix</label>
         <input type="text" id="node-input-topic" placeholder="Topic prefix">
+    </div>
+    <div class="form-row">
+        <label for="node-input-mode"><i class="fa fa-code"></i> Return type</label>
+        <select id="node-input-mode">
+            <option>value</option>
+            <option>object</option>
+        </select>
     </div>
     <div class="form-row">
         <label for="node-input-command"><i class="fa fa-search"></i> Command</label>

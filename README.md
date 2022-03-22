@@ -41,7 +41,7 @@ Example:
 You can also set the necessary information in the node properties. _Command type_ and _Command_ are required. _Channel_ is optional. The value has to be in the msg.payload.
 
 ## Shure AD4 Response Node
-Use the response node to receive REP messages sent by a receiver. The node sends a msg with a topic in the following format and the value as msg.payload.
+Use the response node to receive REP messages sent by a receiver. The node sends a msg with a topic in the following format and the value or object as msg.payload.
 
 `[RECEIVER_NAME]/REP/[COMMAND]/[CHANNEL]`
 
@@ -50,8 +50,6 @@ E.g.: `Receiver-1/REP/FLASH/1` with payload "ON".
 If you set the node property _Topic prefix_ the topic format is as follows:
 
 `[TOPIC_PREFIX]/[RECEIVER_NAME]/REP/[COMMAND]/[CHANNEL]`
-
-The msg object also includes the field _raw_ with the original message from the receiver.
 
 You can use the _Command_ and _Channel_ properties of the node to filter for a specific command and/or channel.
 
@@ -64,18 +62,20 @@ A sample message from a receiver contains several values. You can choose between
 With the option "One msg with all values" the node sends a single msg object including all values as an object in the payload. The _Commands_ filter property has no effect in this mode. The object is structured as follows:
 
     {
-        	"raw":"< SAMPLE 3 ALL 255 000 005 020 XX 00 005 00 006 >",
-        	"commandType":"SAMPLE",
-        	"channel":"3",
-        	"qual":"255",
-        	"audBitmap":"000",
-        	"audPeak":"005",
-        	"audRms":"020",
-        	"rfAntStats":"XX",
-        	"rfBitmapA":"00",
-        	"rfRssiA":"005",
-        	"rfBitmapB":"00",
-        	"rfRssiB":"006"
+        	"raw": "< SAMPLE 3 ALL 255 000 005 020 XX 00 005 00 006 >",
+            "host": "192.168.178.188",
+            "name": "Node name",
+        	"commandType": "SAMPLE",
+        	"channel": 3,
+        	"qual": 255,
+        	"audBitmap": 0,
+        	"audPeak": 5,
+        	"audRms": 20,
+        	"rfAntStats": "XX",
+        	"rfBitmapA": 0,
+        	"rfRssiA": 5,
+        	"rfBitmapB": 0,
+        	"rfRssiB": 6
     }
     
 The topic is set to `[TOPIC_PREFIX]/[RECEIVER_NAME]/SAMPLE/ALL/[CHANNEL]`.

@@ -4,7 +4,6 @@ module.exports = function(RED) {
     function ShureAD4ReceiverConfigNode(config) {
         RED.nodes.createNode(this, config);
         var node = this;
-        node.hostName = config.name;
 
         var client = new net.Socket();
         client.setKeepAlive(true, 5000);
@@ -46,16 +45,22 @@ module.exports = function(RED) {
             while((rep = regex_rep.exec(data)) !== null) {
                 var shureMsg = {
                     raw: rep[0],
+                    host: config.host,
+                    name: config.name,
                     commandType: "REP",
-                    channel: rep[1],
+                    channel: parseInt(rep[1]) + parseInt(config.channelOffset),
                     command: rep[2],
                     value: rep[3]
                 }
 
-                if (shureMsg.value && shureMsg.value.match(/^{.*}$/)) {
-                    shureMsg.value = shureMsg.value.replace("{", "");
-                    shureMsg.value = shureMsg.value.replace("}", "");
-                    shureMsg.value = shureMsg.value.trim();
+                if(shureMsg.value) {
+                    if(shureMsg.value.match(/^\d+$/)) {
+                        shureMsg.value = parseInt(shureMsg.value);
+                    } else if(shureMsg.value.match(/^{.*}$/)) {
+                        shureMsg.value = shureMsg.value.replace("{", "");
+                        shureMsg.value = shureMsg.value.replace("}", "");
+                        shureMsg.value = shureMsg.value.trim();
+                    }
                 }
 
                 node.emit('rep_response', shureMsg);
@@ -67,17 +72,19 @@ module.exports = function(RED) {
             while((sample = regex_sample.exec(data)) !== null) {
                 var sampleMsg = {
                     raw: sample[0],
+                    host: config.host,
+                    name: config.name,
                     commandType: "SAMPLE",
-                    channel: sample[1],
-                    qual: sample[2],
-                    audBitmap: sample[3],
-                    audPeak: sample[4],
-                    audRms: sample[5],
+                    channel: parseInt(sample[1]) + parseInt(config.channelOffset),
+                    qual: parseInt(sample[2]),
+                    audBitmap: parseInt(sample[3]),
+                    audPeak: parseInt(sample[4]),
+                    audRms: parseInt(sample[5]),
                     rfAntStats: sample[6],
-                    rfBitmapA: sample[7],
-                    rfRssiA: sample[8],
-                    rfBitmapB: sample[9],
-                    rfRssiB: sample[10]
+                    rfBitmapA: parseInt(sample[7]),
+                    rfRssiA: parseInt(sample[8]),
+                    rfBitmapB: parseInt(sample[9]),
+                    rfRssiB: parseInt(sample[10])
                 }
 
                 node.emit('sample_response', sampleMsg);

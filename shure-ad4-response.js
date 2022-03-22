@@ -18,9 +18,13 @@ module.exports = function(RED) {
             if(config.channel && config.channel !== rep.channel) return;
 
             var msg = {
-                topic: node.receiver.hostName + '/' + rep.commandType + '/' + rep.command,
-                payload: rep.value,
-                raw: rep.raw
+                topic: rep.name + '/' + rep.commandType + '/' + rep.command
+            }
+
+            if(config.mode === 'value') {
+                msg.payload = rep.value;
+            } else {
+                msg.payload = rep;
             }
 
             if(rep.channel) {
